@@ -1,0 +1,174 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: url(img1/default.jpg) center center no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+#appHeader {
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: white;
+    margin: 50px auto 0;
+    text-shadow: 1px 0px 4px black,
+                0px 0px 1px rgb(225, 77, 8);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 100vh; */
+}
+
+#searchContainer {
+    display: block;
+    text-align: center;
+    margin: 40px auto 0;
+}
+
+#cityInput, #submitBtn {
+    padding: 8px 10px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    transition: 300ms ease;
+}
+
+#submitBtn {
+    background: rgb(225, 77, 8);
+    color: white;
+    cursor: pointer;
+}
+
+#submitBtn:hover, #cityInput:hover {
+    box-shadow: 0px 0px 2px black;
+    background: rgb(240, 85, 15);
+}
+
+#weatherContainer {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 1px black;
+    box-shadow: inset 0px 0px 7px 1px white;
+    color: rgb(246, 246, 246);
+    letter-spacing: 0.5px;
+    padding: 30px;
+    margin: 30px auto 0;
+    border-radius: 10px;
+    font-size: 16px;
+    visibility: hidden;
+}
+
+#city {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#weatherDescriptionImg{
+    display: block;
+    margin: auto;
+}
+
+#cityWeatherDetails {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 10px;
+    border-radius: 10px;
+    padding: 20px 10px;
+    box-shadow: inset 0px 0px 3px 0 white;
+    position: relative;
+}
+
+#temperature {
+    border-right: 2px solid #ddd;
+    margin-right: 5px;
+    padding-right: 5px;
+}
+
+#feelsLike {
+    text-align: center;
+}
+
+hr {
+    margin: 20px 0;
+}
+
+#otherTemperature {
+    float: right;
+}
+
+.other {
+    float: left;
+    margin-right: 40px;
+}
+
+#maxTemp, #humidity {
+    margin: 0 0 7px;
+}
+
+#maxTemp::before {
+    content: url(img1/up.svg);
+    
+    padding: 0 3px;
+}
+
+#minTemp::before {
+    content: url(img1/down.svg);
+    
+    padding: 0 3px;
+}
+
+
+@media screen and (max-width: 600px) {
+    #searchContainer, .submitForm {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #submitBtn {
+        margin-top: 5px;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    #weatherContainer {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 270px) {
+    #appHeader, #searchContainer {
+        margin-top: 30px;
+    }
+
+    #city {
+        margin-bottom: 0;
+    }
+    
+    .otherWeatherDetails {
+        display: block;
+    }
+
+    #otherTemperature,.other {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    #maxTemp, #minTemp {
+        display: inline-block;
+    }
+
+    #otherTemperature {
+        margin-bottom: 7px;
+    }
+}

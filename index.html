@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="manifest" href="/manifest.webmanifest"> -->
+</head>
+<body>
+    <h1 id="appHeader">Weather App</h1>
+
+    <div class="wrapper">        
+        <div id="searchContainer">
+            <form class="submitForm">
+                <input type="text" name="city" id="cityInput" placeholder="Enter City or Zip code" required aria-autocomplete="both" title="Please enter a city name or zip code">
+                <button type="submit" id="submitBtn">Submit</button>
+            </form>
+        </div>
+    
+        <div id="weatherContainer">
+            <div id="mainWeatherDetails">
+                <h1 id="city"></h1>
+    
+                <div>
+                    <img src="" alt="" id="weatherDescriptionImg">
+                </div>
+                
+                <div id="cityWeatherDetails">
+                    <div id="temperature"></div>
+                    <div id="weatherDescription"></div>
+                </div>
+    
+                <div id="feelsLike"></div>
+            </div>
+    
+            <hr>
+    
+            <div class="otherWeatherDetails">
+                <div id="otherTemperature">
+                    <div id="maxTemp"></div>
+                    <div id="minTemp"></div>
+                </div>
+
+                <div class="other">
+                    <div id="humidity"></div>
+                    <div id="wind"></div>
+                </div>    
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
