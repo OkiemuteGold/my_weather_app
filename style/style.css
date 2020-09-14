@@ -4,12 +4,13 @@
 }
 
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background: url(img1/default.jpg) center center no-repeat;
+    background: url(/images/default.jpg) center center no-repeat;
     background-size: cover;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     height: 100vh;
+    width: 100%;
+    max-width: 1000px;
 }
 
 #appHeader {
@@ -17,16 +18,37 @@ body {
     text-align: center;
     letter-spacing: 0.5px;
     color: white;
-    margin: 50px auto 0;
+    margin: 0 auto;
+    padding-top: 50px;
     text-shadow: 1px 0px 4px black,
                 0px 0px 1px rgb(225, 77, 8);
+}
+
+#history {
+    position: absolute;
+    bottom: calc(100vh - 160px);
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-right: 1px solid rgba(0, 0, 0, 2);
+    padding: 10px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: fit-content;
+}
+
+#history a {
+    color: rgb(225, 77, 8);
+    text-decoration: none;
+    transition: 250ms ease;
+}
+
+#history a:hover {
+    color: rgb(240, 85, 15);
 }
 
 .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: 100vh; */
 }
 
 #searchContainer {
@@ -73,7 +95,7 @@ body {
 
 #city {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 28px;
+    font-size: 26px;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -121,22 +143,47 @@ hr {
 }
 
 #maxTemp::before {
-    content: url(img1/up.svg);
+    content: url(/images/up.svg);
     
     padding: 0 3px;
 }
 
 #minTemp::before {
-    content: url(img1/down.svg);
+    content: url(/images/down.svg);
     
     padding: 0 3px;
 }
 
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0px;
+    margin: 0 auto;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 5px 0px black;
+    border-radius: 2px;
+    width: 100%;
+    max-width: 1000px;
+}
+
 
 @media screen and (max-width: 600px) {
-    #searchContainer, .submitForm {
+    #searchContainer, .submitForm, footer {
         display: flex;
         flex-direction: column;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    .social {
+        margin-top: 5px;
     }
     
     #submitBtn {
@@ -151,10 +198,6 @@ hr {
 }
 
 @media screen and (max-width: 270px) {
-    #appHeader, #searchContainer {
-        margin-top: 30px;
-    }
-
     #city {
         margin-bottom: 0;
     }

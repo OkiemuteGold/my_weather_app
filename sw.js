@@ -2,12 +2,13 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('v1').then( (cache) => {
             return cache.addAll([
-                './',
-                './index.html',
-                './style.css',
-                './script.js',
-                './img1',
-                './fav_icon'
+                '/',
+                '/page/index.html',
+                '/style/style.css',
+                '/script/script.js',
+                '/images/',
+                '/images/app_logo.png',
+                '/images/default.jpg'
             ]);
         })
     );
@@ -15,7 +16,6 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('fetch', (event) => {
     // console.log(event.request.url);
-
     event.respondWith(
         caches.match(event.request).then( (resp) => {
             return resp || fetch(event.request).then( (response) => {
@@ -28,7 +28,7 @@ self.addEventListener('fetch', (event) => {
                 return response;
             });
         }).catch( () => {
-            return caches.match('./img1/default.jpg');
+            return caches.match('/images/default.jpg');
         })
     );
 });

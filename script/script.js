@@ -1,6 +1,6 @@
 // service worker
 if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js', {scope: '/'})
+    navigator.serviceWorker.register('./sw.js', {scope: './'})
         .then( (reg) => {
             console.log('Service Worker Registration Successful. Scope is ' + reg.scope);
         }).catch(error => {
@@ -89,32 +89,32 @@ function init(resultFromServer) {
     console.log(resultFromServer);
     switch (resultFromServer.weather[0].main) {
         case 'Clear':
-            document.body.style.backgroundImage = 'url("/images/clear.jpg")';
+            document.body.style.backgroundImage = 'url("/img1/clear.jpg")';
             break;
     
         case 'Clouds':
-            document.body.style.backgroundImage = 'url("/images/cloud.jpg")';
+            document.body.style.backgroundImage = 'url("/img1/cloud.jpg")';
             break;
     
         case 'Rain':
         case 'Drizzle':
-            document.body.style.backgroundImage = 'url("/images/rain.jpg")';
+            document.body.style.backgroundImage = 'url("/img1/rain.jpg")';
             break;
 
         case 'Atmosphere':
-            document.body.style.backgroundImage = 'url("/images/mist.jpg")';
+            document.body.style.backgroundImage = 'url("/img1/mist.jpg")';
             break;
 
         case 'Tornado':
-            document.body.style.backgroundImage = 'url("/images/tornado.jpg")';
+            document.body.style.backgroundImage = 'url("/img1/tornado.jpg")';
             break;
     
         case 'Thunderstorm':
-            document.body.style.backgroundImage = 'url("/images/storm.jpg")';
+            document.body.style.backgroundImage = 'url("/img1/storm.jpg")';
             break;
     
         case 'Snow':
-            document.body.style.backgroundImage = 'url("/images/snow.jpg")';
+            document.body.style.backgroundImage = 'url("/img1/snow.jpg")';
             break;
     
         default:

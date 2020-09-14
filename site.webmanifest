@@ -1,6 +1,7 @@
 {
-    "name": "Weather",
-    "short_name": "Weather",
+    "name": "Weatherman",
+    "description": "This app is great for checking the weather details of any city using its city name or zip code",
+    "short_name": "Weatherman",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
