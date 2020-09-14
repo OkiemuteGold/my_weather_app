@@ -15,7 +15,7 @@
         }
     ],
     "theme_color": "#05445f",
-    "background_color": "#054b68",
+    "background_color": "#4a778e",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
