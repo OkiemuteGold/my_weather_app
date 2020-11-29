@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -16,60 +17,69 @@
 </head>
 <body>
     <h1 id="appHeader">Weather App</h1>
-
-    <div class="wrapper">
-        <!-- <div id="history">
-            <a href="#">History</a>
-            <i class="fa fa-caret-up"></i>
-            
-            <li id="recentSearch"></li>
-        </div> -->
-
-
-        <div id="searchContainer">
-            <form class="submitForm">
-                <input type="text" name="city" id="cityInput" placeholder="Enter City or Zip code" required aria-autocomplete="both" title="Please enter a city name or zip code">
-                <button type="submit" id="submitBtn">Submit</button>
-            </form>
-        </div>
-    
-        <div id="weatherContainer">
-            <div id="mainWeatherDetails">
-                <h1 id="city"></h1>
-    
-                <div>
-                    <img src="" alt="" id="weatherDescriptionImg">
-                </div>
+    <div class="container">
+        <div class="wrapper">
+            <!-- <div id="history">
+                <a href="#">History</a>
+                <i class="fa fa-caret-up"></i>
                 
-                <div id="cityWeatherDetails">
-                    <div id="temperature"></div>
-                    <div id="weatherDescription"></div>
-                </div>
+                <li id="recentSearch"></li>
+            </div> -->
     
-                <div id="feelsLike"></div>
+            <div id="searchContainer">
+                <form class="submitForm">
+                    <input type="text" name="city" id="cityInput" placeholder="Enter City or Zip code" required aria-autocomplete="both" title="Please enter a city name or zip code">
+                    <button type="submit" id="submitBtn">Submit</button>
+                </form>
             </div>
     
-            <hr>
-    
-            <div class="otherWeatherDetails">
-                <div id="otherTemperature">
-                    <div id="maxTemp"></div>
-                    <div id="minTemp"></div>
+            <div id="error-message"><em>Please enter a city or zip code!</em></div>
+        
+            <div id="weatherContainer">
+                <div id="mainWeatherDetails">
+                    <h1 id="city"></h1>
+        
+                    <div>
+                        <img src="" alt="" id="weatherDescriptionImg">
+                    </div>
+                    
+                    <div id="cityWeatherDetails">
+                        <div id="temperature"></div>
+                        <div id="weatherDescription"></div>
+                    </div>
+        
+                    <div id="feelsLike"></div>
                 </div>
-
-                <div class="other">
-                    <div id="humidity"></div>
-                    <div id="wind"></div>
-                </div>    
+        
+                <hr>
+        
+                <div class="otherWeatherDetails">
+                    <div id="otherTemperature">
+                        <div id="maxTemp"></div>
+                        <div id="minTemp"></div>
+                    </div>
+    
+                    <div class="other">
+                        <div id="humidity"></div>
+                        <div id="wind"></div>
+                    </div>    
+                </div>
             </div>
         </div>
     </div>
-    
     <footer>
         <div class="copyright">&copy; 2020 Okiemute Gold</div>
-        <!-- <div class="social">
-            <span>For feedback:</span>
-        </div> -->
+        <div class="social">
+            <a href="https://github.com/OkiemuteGold">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://twitter.com/gold_okiemute">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/gokiemute/">
+                <i class="fab fa-facebook"></i>
+            </a>
+        </div>
     </footer>
 
     <script src="script/script.js"></script>

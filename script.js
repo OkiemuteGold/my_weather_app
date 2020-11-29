@@ -85,6 +85,19 @@ function searchWeather(searchedCity) {
         });
 };
 
+// OR
+// async function searchWeather(searchedCity) {
+//     userSearchMethod(searchedCity);
+
+//     const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchedCity}&APPID=${appId}&units=${units}`);
+//     const data = await resp.json();
+//         data.then( result => {
+//             init(result);
+//         }).catch( error => {
+//             console.log(error);
+//         });
+// };
+
 function init(resultFromServer) {
     console.log(resultFromServer);
     switch (resultFromServer.weather[0].main) {

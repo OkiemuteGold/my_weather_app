@@ -8,23 +8,41 @@ body {
     background-size: cover;
     margin: 0 auto;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     max-width: 1000px;
+    position: relative;
+}
+
+.container, #searchContainer {
+    transition: 500ms ease;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transform: translateY(50%);
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#appHeader, #error-message, #submitBtn {
+    color: #ffffff;
 }
 
 #appHeader {
     font-size: 34px;
     text-align: center;
-    letter-spacing: 0.5px;
-    color: white;
+    letter-spacing: 0.6px;
     margin: 0 auto;
     padding-top: 40px;
     text-shadow: 1px 0px 4px black,
                 0px 0px 1px rgb(225, 77, 8);
 }
 
-#history {
+/* #history {
     position: absolute;
     bottom: calc(100vh - 160px);
     left: 20px;
@@ -33,9 +51,9 @@ body {
     padding: 10px 20px;
     font-family: Arial, Helvetica, sans-serif;
     height: fit-content;
-}
+} */
 
-#history a {
+/* #history a {
     color: rgb(225, 77, 8);
     text-decoration: none;
     transition: 250ms ease;
@@ -43,7 +61,7 @@ body {
 
 #history a:hover {
     color: rgb(240, 85, 15);
-}
+} */
 
 .wrapper {
     display: flex;
@@ -54,7 +72,15 @@ body {
 #searchContainer {
     display: block;
     text-align: center;
-    margin: 30px auto 0;
+    margin: 30px auto 0px;
+}
+
+#error-message {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 8px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    display: none;
 }
 
 #cityInput, #submitBtn {
@@ -62,21 +88,25 @@ body {
     outline: none;
     border: none;
     border-radius: 10px;
+    font-size: 14px;
+    letter-spacing: 0.6px;
     transition: 300ms ease;
 }
 
 #submitBtn {
-    background: rgb(225, 77, 8);
-    color: white;
+    background: rgb(223, 72, 2);
     cursor: pointer;
+    margin-left: 5px;
 }
 
 #cityInput:hover {
-    box-shadow: 0px 0px 2px black;
+    box-shadow: 0px 0px 5px #9a9a9a;
 }
 
+#submitBtn:active, 
+#submitBtn:focus, 
 #submitBtn:hover {
-    box-shadow: 0px 0px 2px black;
+    box-shadow: 0px 0px 5px #9a9a9a;
     background: rgb(240, 85, 15);
 }
 
@@ -90,7 +120,7 @@ body {
     margin: 30px auto 0;
     border-radius: 10px;
     font-size: 16px;
-    visibility: hidden;
+    display: none;
 }
 
 #city {
@@ -156,38 +186,73 @@ hr {
 
 footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     margin: 0 auto;
     padding: 8px 0;
     background-color: rgba(0, 0, 0, 0.2);
+    color: #b5b5b5;
     box-shadow: 0px 1px 5px 0px black;
     border-radius: 2px;
     width: 100%;
     max-width: 1000px;
 }
 
+.social a {
+    margin: 5px;
+    padding: 2px;
+    text-decoration: none;
+    color: #b5b5b5;
+}
 
-@media screen and (max-width: 600px) {
-    #searchContainer, .submitForm, footer {
+.social a, 
+.social a i {
+    transition: 300ms ease;
+}
+
+.social a:hover {
+    color: #ffffff;
+}
+
+.social a:hover i {
+    transform: scale(1.2);
+}
+
+@media screen and (min-width: 1300px) {
+    #appHeader {
+        padding-top: 60px;
+    }
+    #searchContainer {
+        margin: 40px auto 10px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #appHeader {
+        font-size: 30px;
+        padding-top: 30px;
+    }
+
+    #searchContainer, .submitForm {
         display: flex;
         flex-direction: column;
     }
 
-    footer {
-        flex-direction: column;
+    #searchContainer {
+        margin-top: 20px;
     }
 
-    /* .social {
-        margin-top: 5px;
-    } */
+    footer {
+        padding: 5px 0;
+    }
     
     #submitBtn {
         margin-top: 5px;
+        margin-left: 0;
     }
 }
 
@@ -206,7 +271,7 @@ footer {
         display: block;
     }
 
-    #otherTemperature,.other {
+    #otherTemperature, .other {
         float: none;
         width: 100%;
         text-align: center;

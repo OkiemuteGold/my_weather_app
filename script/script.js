@@ -37,16 +37,25 @@ let maxTemp = document.getElementById('maxTemp');
 let minTemp = document.getElementById('minTemp');
 let humidity = document.getElementById('humidity');
 let wind = document.getElementById('wind');
+let errorMessage = document.getElementById('error-message');
+let appHeader = document.getElementById('appHeader');
+let container = document.querySelector('.container');
 
 
 function search() {
     if(cityInput.value) {
+        errorMessage.style.display = 'none';
+        appHeader.style.paddingTop = 40 + 'px';
+        container.classList.remove('container');
         searchedCity = cityInput.value;
         if(searchedCity) {
             searchWeather(searchedCity);
         }
     } else {
-        alert('Please enter a city or zip code!');
+        // alert('Please enter a city or zip code!');
+        // errorMessage.innerHTML = `<em>Please enter a city or zip code!</em>`;
+        errorMessage.style.display = 'block';
+        appHeader.style.paddingTop = 20 + 'px';
     }
 };
 
@@ -89,32 +98,32 @@ function init(resultFromServer) {
     console.log(resultFromServer);
     switch (resultFromServer.weather[0].main) {
         case 'Clear':
-            document.body.style.backgroundImage = 'url("/img1/clear.jpg")';
+            document.body.style.backgroundImage = 'url("/images/clear.jpg")';
             break;
     
         case 'Clouds':
-            document.body.style.backgroundImage = 'url("/img1/cloud.jpg")';
+            document.body.style.backgroundImage = 'url("/images/cloud.jpg")';
             break;
     
         case 'Rain':
         case 'Drizzle':
-            document.body.style.backgroundImage = 'url("/img1/rain.jpg")';
+            document.body.style.backgroundImage = 'url("/images/rain.jpg")';
             break;
 
         case 'Atmosphere':
-            document.body.style.backgroundImage = 'url("/img1/mist.jpg")';
+            document.body.style.backgroundImage = 'url("/images/mist.jpg")';
             break;
 
         case 'Tornado':
-            document.body.style.backgroundImage = 'url("/img1/tornado.jpg")';
+            document.body.style.backgroundImage = 'url("/images/tornado.jpg")';
             break;
     
         case 'Thunderstorm':
-            document.body.style.backgroundImage = 'url("/img1/storm.jpg")';
+            document.body.style.backgroundImage = 'url("/images/storm.jpg")';
             break;
     
         case 'Snow':
-            document.body.style.backgroundImage = 'url("/img1/snow.jpg")';
+            document.body.style.backgroundImage = 'url("/images/snow.jpg")';
             break;
     
         default:
@@ -136,5 +145,5 @@ function init(resultFromServer) {
     humidity.innerHTML = 'Humidity: ' + rfs.main.humidity + '%';
     wind.innerHTML = 'Wind: ' + Math.round(rfs.wind.speed) + 'm/s';
 
-    weatherContainer.style.visibility = 'visible'
+    weatherContainer.style.display = 'block';
 };
