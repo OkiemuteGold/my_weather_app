@@ -39,14 +39,12 @@ let humidity = document.getElementById('humidity');
 let wind = document.getElementById('wind');
 let errorMessage = document.getElementById('error-message');
 let appHeader = document.getElementById('appHeader');
-let container = document.querySelector('.container');
 
 
 function search() {
     if(cityInput.value) {
         errorMessage.style.display = 'none';
         appHeader.style.paddingTop = 40 + 'px';
-        container.classList.remove('container');
         searchedCity = cityInput.value;
         if(searchedCity) {
             searchWeather(searchedCity);
@@ -145,5 +143,5 @@ function init(resultFromServer) {
     humidity.innerHTML = 'Humidity: ' + rfs.main.humidity + '%';
     wind.innerHTML = 'Wind: ' + Math.round(rfs.wind.speed) + 'm/s';
 
-    weatherContainer.style.display = 'block';
+    weatherContainer.style.visibility = 'visible';
 };

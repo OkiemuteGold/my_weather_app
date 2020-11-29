@@ -14,20 +14,6 @@ body {
     position: relative;
 }
 
-.container, #searchContainer {
-    transition: 500ms ease;
-}
-
-.container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    transform: translateY(50%);
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
 #appHeader, #error-message, #submitBtn {
     color: #ffffff;
 }
@@ -120,7 +106,7 @@ body {
     margin: 30px auto 0;
     border-radius: 10px;
     font-size: 16px;
-    display: none;
+    visibility: hidden;
 }
 
 #city {
@@ -195,7 +181,7 @@ footer {
     margin: 0 auto;
     padding: 8px 0;
     background-color: rgba(0, 0, 0, 0.2);
-    color: #b5b5b5;
+    color: #cccccc;
     box-shadow: 0px 1px 5px 0px black;
     border-radius: 2px;
     width: 100%;
@@ -206,7 +192,7 @@ footer {
     margin: 5px;
     padding: 2px;
     text-decoration: none;
-    color: #b5b5b5;
+    color: #cccccc;
 }
 
 .social a, 
