@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <meta name="description" content="Okiemute Gold - Weather App">
+    <title>Okiemute Gold - Weather App</title>
+    <!-- <link rel="canonical" href="https://weather-man-app.netlify.app/"/> -->
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
+    <script src="sw.js"> </script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -20,14 +24,15 @@
 
     <div class="wrapper">
         <!-- <div id="history">
-            <a href="#">History</a>
-            <i class="fa fa-caret-up"></i>
-            
-            <li id="recentSearch"></li>
+            <i class="fas fa-bars"></i>
+            <li id="recentSearch">he</li>
         </div> -->
+        
+        <audio src="sound/sound.mp3" id="sound"></audio>
 
         <div id="searchContainer">
             <form class="submitForm">
+                <i class="fa fa-microphone" id="tts-icon"></i>
                 <input type="text" name="city" id="cityInput" placeholder="Enter City or Zip code" required aria-autocomplete="both" title="Please enter a city name or zip code">
                 <button type="submit" id="submitBtn">Submit</button>
             </form>
@@ -38,16 +43,13 @@
         <div id="weatherContainer">
             <div id="mainWeatherDetails">
                 <h1 id="city"></h1>
-    
                 <div>
-                    <img src="" alt="" id="weatherDescriptionImg">
+                    <img src="" alt="" id="weatherDescriptionImg" width="100%" height="100%">
                 </div>
-                
                 <div id="cityWeatherDetails">
                     <div id="temperature"></div>
                     <div id="weatherDescription"></div>
                 </div>
-    
                 <div id="feelsLike"></div>
             </div>
     
@@ -58,7 +60,6 @@
                     <div id="maxTemp"></div>
                     <div id="minTemp"></div>
                 </div>
-
                 <div class="other">
                     <div id="humidity"></div>
                     <div id="wind"></div>

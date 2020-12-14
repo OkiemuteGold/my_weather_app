@@ -20,7 +20,7 @@ let rfs;
 let weatherContainer = document.getElementById('weatherContainer');
 
 // searchContainer ------------->
-const cityInput = document.getElementById('cityInput');
+var cityInput = document.getElementById('cityInput');
 const submitBtn = document.getElementById('submitBtn');
 
 let city = document.getElementById('city');
@@ -42,14 +42,17 @@ let appHeader = document.getElementById('appHeader');
 
 
 function search() {
-    if(cityInput.value) {
+    if(cityInput.value || voiceInput) {
         errorMessage.style.display = 'none';
         appHeader.style.paddingTop = 40 + 'px';
-        searchedCity = cityInput.value;
+
+        var voiceInput;
+        searchedCity = cityInput.value || voiceInput;
         if(searchedCity) {
             searchWeather(searchedCity);
         }
-    } else {
+    } 
+    else {
         // alert('Please enter a city or zip code!');
         // errorMessage.innerHTML = `<em>Please enter a city or zip code!</em>`;
         errorMessage.style.display = 'block';
@@ -57,7 +60,7 @@ function search() {
     }
 };
 
-// Submit media
+// Submit
 submitForm.addEventListener('submit', (e) => {
     e.preventDefault();
     search();
@@ -67,7 +70,6 @@ submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
     search();
 });
-
 
 // Search Method
 function userSearchMethod(searchedCity) {
@@ -145,3 +147,66 @@ function init(resultFromServer) {
 
     weatherContainer.style.visibility = 'visible';
 };
+
+
+// $(document).ready(function () {
+//     // History
+//     $('#hledat').click(function() {
+//         addToHistory($('#mesto').val());
+//     });
+      
+//     $('#val').text(getHistory()[0] || ''); // shows latest item
+    
+//     var getHistory = function() {
+//         return JSON.parse(localStorage.getItem("test")) || [];
+//     }
+    
+//     var addToHistory = function addToHistory(value) {
+//         var history = getHistory();
+//         history.unshift(value);
+//         localStorage.setItem('test', JSON.stringify(history.slice(0, 5)));
+//     }
+//     // History
+// });
+
+
+// SPEECH RECOGNITION AND SPEECH SYNTHESIS --------------------> 
+const ttsIcon = document.getElementById('tts-icon');
+const ttsIconSound = document.querySelector('#sound');
+
+var SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+if (!('webkitSpeechRecognition' in window)) {
+    upgrade();
+}
+else {
+    var recognition = new SpeechRecognition();
+    recognition.interimResult = true;
+    recognition.lang = 'en-US';
+    recognition.maxAlternatives = 3;
+
+    ttsIcon.addEventListener('click', () => {
+        ttsIconSound.play();
+        // recognition.onstart = (e) => {
+        //     e.preventDefault;
+        //     console.log(e);
+        // };
+
+        // recognition.addEventListener('result', (event) => {...};
+        recognition.onresult = function(event) {
+            var voiceInput = event.results[0][0].transcript;
+            cityInput.value = voiceInput;
+            console.log(event.results[0][0].transcript);
+            // console.log(event.results[0][0].confidence);
+        };
+
+        recognition.start();
+
+        recognition.onspeechend = function() {
+            recognition.stop();
+        };
+
+        recognition.onerror = function(event) {
+            console.log('Error occurred in recognition: ' + event.error);
+        };
+    });
+}

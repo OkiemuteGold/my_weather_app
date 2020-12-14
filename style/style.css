@@ -14,40 +14,16 @@ body {
     position: relative;
 }
 
-#appHeader, #error-message, #submitBtn {
-    color: #ffffff;
-}
-
 #appHeader {
     font-size: 34px;
     text-align: center;
     letter-spacing: 0.6px;
     margin: 0 auto;
     padding-top: 40px;
+    color: #ffffff;
     text-shadow: 1px 0px 4px black,
                 0px 0px 1px rgb(225, 77, 8);
 }
-
-/* #history {
-    position: absolute;
-    bottom: calc(100vh - 160px);
-    left: 20px;
-    background-color: rgba(0, 0, 0, 0.15);
-    border-right: 1px solid rgba(0, 0, 0, 2);
-    padding: 10px 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    height: fit-content;
-} */
-
-/* #history a {
-    color: rgb(225, 77, 8);
-    text-decoration: none;
-    transition: 250ms ease;
-}
-
-#history a:hover {
-    color: rgb(240, 85, 15);
-} */
 
 .wrapper {
     display: flex;
@@ -67,10 +43,10 @@ body {
     font-size: 14px;
     letter-spacing: 0.3px;
     display: none;
+    color: #ffffff;
 }
 
 #cityInput, #submitBtn {
-    padding: 8px 10px;
     outline: none;
     border: none;
     border-radius: 10px;
@@ -79,21 +55,48 @@ body {
     transition: 300ms ease;
 }
 
+#cityInput {
+    padding: 8px 10px 8px 35px;
+}
+
+#cityInput::placeholder {
+    position: relative;
+}
+
+.fa-microphone {
+    position: absolute;
+    font-size: 18px;
+    padding: 7px 10px 7px 10px;
+    cursor: pointer;
+}
+
+/* .fa-microphone:after {
+    content: '';
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 7px;
+    color: #757575;
+} */
+
+#cityInput:hover,
+#cityInput:focus {
+    box-shadow: 0px 0px 5px #b5b5b5;
+}
+
 #submitBtn {
-    background: rgb(223, 72, 2);
+    padding: 8px 10px;
+    background-color: rgb(230, 73, 0);
+    color: #ffffff;
     cursor: pointer;
     margin-left: 5px;
 }
 
-#cityInput:hover {
-    box-shadow: 0px 0px 5px #9a9a9a;
-}
-
+#submitBtn:hover, 
 #submitBtn:active, 
-#submitBtn:focus, 
-#submitBtn:hover {
-    box-shadow: 0px 0px 5px #9a9a9a;
-    background: rgb(240, 85, 15);
+#submitBtn:focus {
+    box-shadow: 0px 0px 3px #9a9a9a;
+    background-color: rgb(240, 85, 15);
 }
 
 #weatherContainer {
@@ -103,7 +106,7 @@ body {
     color: rgb(246, 246, 246);
     letter-spacing: 0.5px;
     padding: 30px;
-    margin: 30px auto 0;
+    margin: 25px auto 0;
     border-radius: 10px;
     font-size: 16px;
     visibility: hidden;
@@ -112,7 +115,7 @@ body {
 #city {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 26px;
-    margin-bottom: 5px;
+    margin-bottom: 0;
     text-align: center;
 }
 
@@ -159,14 +162,12 @@ hr {
 }
 
 #maxTemp::before {
-    content: url(/images/up.svg);
-    
+    content: url(/images/up.svg); 
     padding: 0 3px;
 }
 
 #minTemp::before {
     content: url(/images/down.svg);
-    
     padding: 0 3px;
 }
 
@@ -181,7 +182,7 @@ footer {
     margin: 0 auto;
     padding: 8px 0;
     background-color: rgba(0, 0, 0, 0.2);
-    color: #cccccc;
+    color: #eeeeee;
     box-shadow: 0px 1px 5px 0px black;
     border-radius: 2px;
     width: 100%;
@@ -192,7 +193,7 @@ footer {
     margin: 5px;
     padding: 2px;
     text-decoration: none;
-    color: #cccccc;
+    color: #eeeeee;
 }
 
 .social a, 
