@@ -122,6 +122,8 @@ body {
 #weatherDescriptionImg{
     display: block;
     margin: auto;
+    max-height: 150px;
+    max-width: 150px;
 }
 
 #cityWeatherDetails {
@@ -213,17 +215,30 @@ footer {
     #appHeader {
         padding-top: 60px;
     }
+    
     #searchContainer {
         margin: 40px auto 10px;
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
     #appHeader {
         font-size: 30px;
-        padding-top: 30px;
+        padding-top: 20px;
+    }
+    
+    #weatherContainer {
+        padding: 20px;
+        margin-top: 20px;
     }
 
+    #weatherDescriptionImg{
+        max-height: 120px;
+        max-width: 120px;
+    }
+}
+
+@media screen and (max-width: 425px) {
     #searchContainer, .submitForm {
         display: flex;
         flex-direction: column;
@@ -245,7 +260,7 @@ footer {
 
 @media screen and (max-width: 325px) {
     #weatherContainer {
-        margin-top: 20px;
+        margin-top: 15px;
     }
 }
 
