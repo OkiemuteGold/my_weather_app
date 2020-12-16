@@ -53,7 +53,7 @@ let appHeader = document.getElementById('app-header');
 function search() {
     if(cityInput.value || voiceInput) {
         errorMessage.style.display = 'none';
-        appHeader.style.paddingTop = 40 + 'px';
+        appHeader.style.paddingTop = 30 + 'px';
 
         var voiceInput;
         searchedCity = cityInput.value || voiceInput;
