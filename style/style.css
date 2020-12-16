@@ -12,18 +12,22 @@ body {
     width: 100%;
     max-width: 1000px;
     position: relative;
+    overflow: hidden;
 }
 
 #app-header {
     font-size: 34px;
+    font-stretch: extra-expanded;
     text-align: center;
     letter-spacing: 0.6px;
     margin: 0 auto;
     padding-top: 40px;
     color: #ffffff;
-    text-shadow: 1px 0px 4px black,
-                0px 0px 1px rgb(225, 77, 8);
+    text-shadow: 1px 0px 20px #222222,
+                0px 0px 3px  rgb(237, 83, 13);
 }
+
+#app-header i { color: rgb(237, 83, 13); animation-duration: 2s; }
 
 .wrapper {
     display: flex;
@@ -49,7 +53,7 @@ body {
 #city-input, #submit-button {
     outline: none;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 14px;
     letter-spacing: 0.6px;
     transition: 300ms ease;
@@ -62,7 +66,7 @@ body {
 .fa-microphone {
     position: absolute;
     font-size: 18px;
-    padding: 7px 10px 7px 10px;
+    padding: 7px 10px 7px 12px;
     cursor: pointer;
 }
 
@@ -70,7 +74,7 @@ body {
 #city-input:focus { box-shadow: 0px 0px 5px #b5b5b5; }
 
 #submit-button {
-    padding: 8px 10px;
+    padding: 8px 15px;
     background-color: rgb(230, 73, 0);
     color: #ffffff;
     cursor: pointer;
@@ -80,35 +84,34 @@ body {
 #submit-button:hover, 
 #submit-button:active, 
 #submit-button:focus {
-    box-shadow: 0px 0px 3px #9a9a9a;
-    background-color: rgb(240, 85, 15);
+    background-color: rgb(237, 83, 13);
 }
 
 #weather-container {
     background-color: rgba(0, 0, 0, 0.2);
-    text-shadow: 1px 1px 1px black;
-    box-shadow: inset 0px 0px 7px 1px white;
-    color: rgb(246, 246, 246);
+    /* text-shadow: 1px 1px 1px #111111; */
+    box-shadow: inset 0px 0px 7px 1px #ffffff;
+    color: rgb(248, 248, 248);
     letter-spacing: 0.5px;
     padding: 30px;
     margin: 25px auto 0;
     border-radius: 10px;
     font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     visibility: hidden;
 }
 
 #city {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 26px;
     margin-bottom: 0;
     text-align: center;
 }
 
-#weather-description-img{
+#weather-description-img {
     display: block;
     margin: auto;
-    max-height: 150px;
-    max-width: 150px;
+    max-height: 140px;
+    max-width: 140px;
 }
 
 #city-weather-details {
@@ -117,7 +120,7 @@ body {
     margin: 0 0 10px;
     border-radius: 10px;
     padding: 15px 10px;
-    box-shadow: inset 0px 0px 3px 0 white;
+    box-shadow: inset 0px 0px 3px 0 #ffffff;
     position: relative;
 }
 
@@ -161,7 +164,7 @@ footer {
     margin: 0 auto;
     padding: 8px 0;
     background-color: rgba(0, 0, 0, 0.2);
-    color: #eeeeee;
+    color: #ffffff;
     box-shadow: 0px 1px 5px 0px black;
     border-radius: 2px;
     width: 100%;
@@ -172,57 +175,48 @@ footer {
     margin: 5px;
     padding: 2px;
     text-decoration: none;
-    color: #eeeeee;
+    color: #ffffff;
 }
 
 .social a, 
 .social a i { transition: 300ms ease; }
 
-.social a:hover { color: #ffffff; }
-
-.social a:hover i { transform: scale(1.2); }
+.social a:hover i, .social a:focus i { transform: scale(1.2); }
 
 @media screen and (min-width: 1300px) {
     #app-header { padding-top: 60px; }
-    
     #search-container { margin: 40px auto 10px; }
 }
 
 @media screen and (max-width: 768px) {
-    #app-header {
-        font-size: 30px;
-        padding-top: 20px;
-    }
+    #app-header { font-size: 30px; }
+
+    #weather-container, 
+    #search-container { margin-top: 20px; }
     
-    #weather-container {
-        padding: 20px;
-        margin-top: 20px;
-    }
+    #weather-container { padding: 20px; }
 
     #weather-description-img{
-        max-height: 120px;
-        max-width: 120px;
+        max-height: 100px;
+        max-width: 100px;
     }
 }
 
 @media screen and (max-width: 425px) {
+    #app-header { padding-top: 20px; }
+
     #search-container, .submit-form {
         display: flex;
         flex-direction: column;
     }
 
-    #search-container { margin-top: 20px; }
-
-    footer { padding: 5px 0; }
-    
+    #search-container { margin-top: 20px; }    
     #submit-button {
         margin-top: 5px;
         margin-left: 0;
     }
-}
-
-@media screen and (max-width: 325px) {
-    #weather-container { margin-top: 15px; }
+    
+    footer { padding: 5px 0; }
 }
 
 @media screen and (max-width: 270px) {

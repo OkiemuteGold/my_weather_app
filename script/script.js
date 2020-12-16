@@ -10,6 +10,11 @@ if('serviceWorker' in navigator) {
 
 // http://api.openweathermap.org/data/2.5/weather?id={city id}&{your api key}&units;
 
+let headerIcon = document.querySelector('#app-header i');
+setInterval(() => {
+    headerIcon.classList.toggle('fa-spin');
+}, 2000);
+
 // Parameters
 let appId = '9f517903a592b851b987e2cba3dddd85';
 let units = 'metric';
