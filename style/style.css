@@ -213,6 +213,10 @@ footer {
 }
 
 @media screen and (max-width: 425px) {
+    .wrapper {
+        margin-bottom: 5px;
+    }
+
     #app-header { padding-top: 20px; }
 
     #search-container, .submit-form {
@@ -236,7 +240,7 @@ footer {
 
     #city { font-size: 16px; margin-bottom: 0; }
 
-    #city-weather-details { padding: 6px; }
+    #city-weather-details { padding: 5px; }
 
     hr { margin: 10px 0; }
 
