@@ -14,7 +14,7 @@ body {
     position: relative;
 }
 
-#appHeader {
+#app-header {
     font-size: 34px;
     text-align: center;
     letter-spacing: 0.6px;
@@ -31,7 +31,7 @@ body {
     align-items: center;
 }
 
-#searchContainer {
+#search-container {
     display: block;
     text-align: center;
     margin: 30px auto 0px;
@@ -46,7 +46,7 @@ body {
     color: #ffffff;
 }
 
-#cityInput, #submitBtn {
+#city-input, #submit-button {
     outline: none;
     border: none;
     border-radius: 10px;
@@ -55,13 +55,9 @@ body {
     transition: 300ms ease;
 }
 
-#cityInput {
-    padding: 8px 10px 8px 35px;
-}
+#city-input { padding: 8px 10px 8px 35px; }
 
-#cityInput::placeholder {
-    position: relative;
-}
+#city-input::placeholder { position: relative; }
 
 .fa-microphone {
     position: absolute;
@@ -70,21 +66,10 @@ body {
     cursor: pointer;
 }
 
-/* .fa-microphone:after {
-    content: '';
-    left: 0;
-    top: 0;
-    position: absolute;
-    height: 7px;
-    color: #757575;
-} */
+#city-input:hover,
+#city-input:focus { box-shadow: 0px 0px 5px #b5b5b5; }
 
-#cityInput:hover,
-#cityInput:focus {
-    box-shadow: 0px 0px 5px #b5b5b5;
-}
-
-#submitBtn {
+#submit-button {
     padding: 8px 10px;
     background-color: rgb(230, 73, 0);
     color: #ffffff;
@@ -92,14 +77,14 @@ body {
     margin-left: 5px;
 }
 
-#submitBtn:hover, 
-#submitBtn:active, 
-#submitBtn:focus {
+#submit-button:hover, 
+#submit-button:active, 
+#submit-button:focus {
     box-shadow: 0px 0px 3px #9a9a9a;
     background-color: rgb(240, 85, 15);
 }
 
-#weatherContainer {
+#weather-container {
     background-color: rgba(0, 0, 0, 0.2);
     text-shadow: 1px 1px 1px black;
     box-shadow: inset 0px 0px 7px 1px white;
@@ -119,14 +104,14 @@ body {
     text-align: center;
 }
 
-#weatherDescriptionImg{
+#weather-description-img{
     display: block;
     margin: auto;
     max-height: 150px;
     max-width: 150px;
 }
 
-#cityWeatherDetails {
+#city-weather-details {
     display: flex;
     justify-content: center;
     margin: 0 0 10px;
@@ -142,33 +127,25 @@ body {
     padding-right: 5px;
 }
 
-#feelsLike {
-    text-align: center;
-}
+#feels-like { text-align: center; }
 
-hr {
-    margin: 15px 0;
-}
+hr { margin: 15px 0; }
 
-#otherTemperature {
-    float: right;
-}
+#other-temperature { float: right; }
 
-.other {
+.others {
     float: left;
     margin-right: 40px;
 }
 
-#maxTemp, #humidity {
-    margin: 0 0 7px;
-}
+#max-temp, #humidity { margin: 0 0 7px; }
 
-#maxTemp::before {
+#max-temp::before {
     content: url(/images/up.svg); 
     padding: 0 3px;
 }
 
-#minTemp::before {
+#min-temp::before {
     content: url(/images/down.svg);
     padding: 0 3px;
 }
@@ -199,91 +176,66 @@ footer {
 }
 
 .social a, 
-.social a i {
-    transition: 300ms ease;
-}
+.social a i { transition: 300ms ease; }
 
-.social a:hover {
-    color: #ffffff;
-}
+.social a:hover { color: #ffffff; }
 
-.social a:hover i {
-    transform: scale(1.2);
-}
+.social a:hover i { transform: scale(1.2); }
 
 @media screen and (min-width: 1300px) {
-    #appHeader {
-        padding-top: 60px;
-    }
+    #app-header { padding-top: 60px; }
     
-    #searchContainer {
-        margin: 40px auto 10px;
-    }
+    #search-container { margin: 40px auto 10px; }
 }
 
 @media screen and (max-width: 768px) {
-    #appHeader {
+    #app-header {
         font-size: 30px;
         padding-top: 20px;
     }
     
-    #weatherContainer {
+    #weather-container {
         padding: 20px;
         margin-top: 20px;
     }
 
-    #weatherDescriptionImg{
+    #weather-description-img{
         max-height: 120px;
         max-width: 120px;
     }
 }
 
 @media screen and (max-width: 425px) {
-    #searchContainer, .submitForm {
+    #search-container, .submit-form {
         display: flex;
         flex-direction: column;
     }
 
-    #searchContainer {
-        margin-top: 20px;
-    }
+    #search-container { margin-top: 20px; }
 
-    footer {
-        padding: 5px 0;
-    }
+    footer { padding: 5px 0; }
     
-    #submitBtn {
+    #submit-button {
         margin-top: 5px;
         margin-left: 0;
     }
 }
 
 @media screen and (max-width: 325px) {
-    #weatherContainer {
-        margin-top: 15px;
-    }
+    #weather-container { margin-top: 15px; }
 }
 
 @media screen and (max-width: 270px) {
-    #city {
-        margin-bottom: 0;
-    }
-    
-    .otherWeatherDetails {
-        display: block;
-    }
+    #city { margin-bottom: 0; }
 
-    #otherTemperature, .other {
+    .other-weather-details { display: block; }
+
+    #other-temperature, .others {
         float: none;
         width: 100%;
         text-align: center;
     }
 
-    #maxTemp, #minTemp {
-        display: inline-block;
-    }
-
-    #otherTemperature {
-        margin-bottom: 5px;
-    }
+    #max-temp, #min-temp { display: inline-block; }
+    #other-temperature { margin-bottom: 5px; }
 }

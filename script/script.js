@@ -17,30 +17,34 @@ let searchMethod;
 let searchedCity;
 let rfs;
 
-let weatherContainer = document.getElementById('weatherContainer');
+let weatherContainer = document.getElementById('weather-container');
 
-// searchContainer ------------->
-var cityInput = document.getElementById('cityInput');
-const submitBtn = document.getElementById('submitBtn');
+// search-container ------------->
+var cityInput = document.getElementById('city-input');
+const submitBtn = document.getElementById('submit-button');
 
 let city = document.getElementById('city');
-let submitForm = document.querySelector('.submitForm');
+let submitForm = document.querySelector('.submit-form');
 
-// cityWeatherDetails ------------->
+// city-weather-details ------------->
 let temperature = document.getElementById('temperature');
-let weatherDescription = document.querySelector('#weatherDescription');
-let weatherDescriptionImg = document.querySelector('#weatherDescriptionImg');
-let feelsLike = document.getElementById('feelsLike');
+let weatherDescription = document.querySelector('#weather-description');
+let weatherDescriptionImg = document.querySelector('#weather-description-img');
+let feelsLike = document.getElementById('feels-like');
 
-// otherWeatherDetails ------------->
-let maxTemp = document.getElementById('maxTemp');
-let minTemp = document.getElementById('minTemp');
+// other-weather-details ------------->
+let maxTemp = document.getElementById('max-temp');
+let minTemp = document.getElementById('min-temp');
 let humidity = document.getElementById('humidity');
 let wind = document.getElementById('wind');
 let errorMessage = document.getElementById('error-message');
-let appHeader = document.getElementById('appHeader');
+let appHeader = document.getElementById('app-header');
 
+// determine the user's input method with SEARCH METHOD, and put the value in RESULT
+// take the output from RESULT and put in SEARCH function.. if there is a searched city, run searchWeather FUNCTION with the argument as searchedCity
+// use submit, and click event listeners to initialize and return result
 
+// SEARCH
 function search() {
     if(cityInput.value || voiceInput) {
         errorMessage.style.display = 'none';
@@ -60,7 +64,7 @@ function search() {
     }
 };
 
-// Submit
+// SUBMIT
 submitForm.addEventListener('submit', (e) => {
     e.preventDefault();
     search();
@@ -71,7 +75,7 @@ submitBtn.addEventListener('click', (e) => {
     search();
 });
 
-// Search Method
+// SEARCH METHOD
 function userSearchMethod(searchedCity) {
     if(searchedCity.length === 5 && Number.parseInt(searchedCity) + '' === searchedCity) {
         searchMethod = 'zip';
@@ -80,7 +84,7 @@ function userSearchMethod(searchedCity) {
     }
 };
 
-// Result
+// RESULT
 function searchWeather(searchedCity) {
     userSearchMethod(searchedCity);
 
@@ -89,13 +93,31 @@ function searchWeather(searchedCity) {
             return result.json();
         }).then( result => {
             init(result);
+
+            // SPEECH SYNTHESIS ------------------->
+            if ((result.cod === '404') || !searchedCity) {
+                sayThis = new SpeechSynthesisUtterance(`I cannot find the weather for ${searchedCity}`);
+                speechSynth.speak(sayThis);
+            }else{
+                sayThis = new SpeechSynthesisUtterance(         // get city's weather and speak it -------------->
+                    `the weather condition in ${result.name} is mostly full of ${result.weather[0].description}. 
+                    ${result.name} has a temperature of ${result.main.temp} degrees Celsius, 
+                    humidity of ${result.main.humidity} millimeter mercury, 
+                    and a wind speed of ${result.wind.speed} meter per second.`
+                );
+                speechSynth.speak(sayThis);
+            }
         }).catch( error => {
             console.log(error);
         });
 };
 
+// let weatherArray = [];
+
 function init(resultFromServer) {
     console.log(resultFromServer);
+    // weatherArray.push(resultFromServer);
+    
     switch (resultFromServer.weather[0].main) {
         case 'Clear':
             document.body.style.backgroundImage = 'url("/images/clear.jpg")';
@@ -143,11 +165,11 @@ function init(resultFromServer) {
     minTemp.innerHTML = Math.round(rfs.main.temp_min) + '&deg;' + 'C';
 
     humidity.innerHTML = 'Humidity: ' + rfs.main.humidity + '%';
+    
     wind.innerHTML = 'Wind: ' + Math.round(rfs.wind.speed) + 'm/s';
 
     weatherContainer.style.visibility = 'visible';
 };
-
 
 // $(document).ready(function () {
 //     // History
@@ -169,44 +191,67 @@ function init(resultFromServer) {
 //     // History
 // });
 
+// SPEECH RECOGNITION (stt) -------------------->
+const sttIcon = document.getElementById('stt-icon');
+const sttIconSound = document.querySelector('#sound');
 
-// SPEECH RECOGNITION AND SPEECH SYNTHESIS --------------------> 
-const ttsIcon = document.getElementById('tts-icon');
-const ttsIconSound = document.querySelector('#sound');
-
-var SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 if (!('webkitSpeechRecognition' in window)) {
     upgrade();
 }
 else {
     var recognition = new SpeechRecognition();
     recognition.interimResult = true;
-    recognition.lang = 'en-US';
+    recognition.lang = 'en-GB';
     recognition.maxAlternatives = 3;
 
-    ttsIcon.addEventListener('click', () => {
-        ttsIconSound.play();
-        // recognition.onstart = (e) => {
-        //     e.preventDefault;
-        //     console.log(e);
-        // };
+    sttIcon.addEventListener('click', () => {
+        sttIconSound.play();
+        dictate();
+    });
 
-        // recognition.addEventListener('result', (event) => {...};
-        recognition.onresult = function(event) {
-            var voiceInput = event.results[0][0].transcript;
-            cityInput.value = voiceInput;
-            console.log(event.results[0][0].transcript);
-            // console.log(event.results[0][0].confidence);
-        };
-
+    const dictate = () => {
         recognition.start();
 
-        recognition.onspeechend = function() {
-            recognition.stop();
-        };
+        // recognition.addEventListener('result', (e) => {...};
+        recognition.onresult = function(e) {
+            var voiceInput = e.results[0][0].transcript;        // Save the result in a variable
+            cityInput.value = voiceInput;           // Set it to display in the input text-box... line 44-50 
+            console.log(e.results[0][0].confidence);
 
+            if (e.results[0].isFinal) {         // if user has stopped speaking                
+                if (voiceInput.includes('what is the time')) {
+                    speak(getTime);     // run getTime function and speak time
+                };
+                if (voiceInput.includes('what is today\'s date')) {
+                    speak(getDate);     // run getDate function and speak date
+                };
+            };
+        };
+        
+        recognition.onend = function() {
+            search();
+        };
+        
         recognition.onerror = function(event) {
             console.log('Error occurred in recognition: ' + event.error);
         };
-    });
+    }
 }
+
+// SPEECH SYNTHESIS (tts) -------------------->
+const speechSynth = window.speechSynthesis;         // instantiate speech synthesis
+const speak = (action) => {
+    sayThis = new SpeechSynthesisUtterance(action());
+    speechSynth.speak(sayThis);
+};
+
+const getTime = () => {         // get time
+    const time = new Date(Date.now());
+    return `the time is ${time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}`
+};
+  
+const getDate = () => {         // get date
+    const time = new Date(Date.now())
+    return `today is ${time.toLocaleDateString()}`;
+};
