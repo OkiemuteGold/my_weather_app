@@ -230,13 +230,15 @@ footer {
 }
 
 @media screen and (max-width: 270px) {
-    #app-header { font-size: 26px; padding-top: 15px; }
+    #app-header { font-size: 24px; padding-top: 15px; }
 
-    #city { font-size: 20px; margin-bottom: 0; }
+    #weather-container { padding: 15px; }
 
-    #city-weather-details { padding: 10px 8px; }
+    #city { font-size: 18px; margin-bottom: 0; }
 
-    hr { margin: 12px 0; }
+    #city-weather-details { padding: 8px; }
+
+    hr { margin: 10px 0; }
 
     .other-weather-details { display: block; }
 
